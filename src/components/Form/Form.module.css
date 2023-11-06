@@ -1,0 +1,33 @@
+.form{
+   
+    border: 1px solid black;
+    width: 360px;
+    padding: 24px;
+    
+}
+
+.label{
+    display: block;
+    font-size: 24px;
+}
+
+.input{
+    display: block;
+    margin-bottom: 18px;
+    font-size: 20px;
+    padding: 8px;
+    width: 320px;
+
+}
+
+.button{
+    display: block;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.button:hover{
+    background-color: rgb(67, 24, 184);
+    color: white;
+
+}
