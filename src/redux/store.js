@@ -1,7 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit"
 
 import {contactsReducer} from './contactsReducer.js'
-
+import {userReducer} from './userReducer.js'
 // import {
 //     persistStore,
 //     persistReducer,
@@ -24,6 +24,7 @@ export const store = configureStore({
     reducer: {
         // contacts: persistReducer(contactsDataConfirg, contactsReducer),
         contacts: contactsReducer,
+        userData: userReducer,
     },
 
     // middleware: getDefaultMiddleware => 
