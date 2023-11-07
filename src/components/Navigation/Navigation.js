@@ -1,19 +1,39 @@
+import { UserMenu } from 'components/UserMenu/UserMenu';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { Link } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
+import { selectIsSignIt, selectUser } from 'redux/author.selectors';
 
 export const Navigation = () => {
+    const authorization = useSelector(selectIsSignIt)
+    const user = useSelector(selectUser)
+    console.log(user)
+
     return (
-         <nav>
-            <Link className='navLink' to='/register'>
-                Register
-            </Link>
-            <Link className='navLink' to='/login'>
-                Login
-            </Link>
-            <Link className='navLink' to='/contacts'>
-                Contacts
-            </Link>
-        </nav>  
-       )
+        
+        <header>
+            <nav>
+                {!authorization ? (
+                    <>
+                        <NavLink className='navLink' to='/register'>
+                            Register
+                        </NavLink>
+                        <NavLink className='navLink' to='/login'>
+                            Login
+                        </NavLink>
+                    </>) : (
+                    <>
+                        <NavLink className='navLink' to='/contacts'>
+                            Contacts
+                        </NavLink>
+                        <UserMenu
+                        email={user.email} 
+                        />
+                    </>
+                )}
+            </nav>
+        </header>
+        
+    );
 };

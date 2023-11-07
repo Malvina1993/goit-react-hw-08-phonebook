@@ -10,6 +10,7 @@ import { Filter } from "../components/Filter/Filter";
 import {useSelector, useDispatch} from 'react-redux'
 
 import {addContact, deleteContact, fetchContacts, setFilter} from '../redux/contactsReducer.js'
+import { selectIsSignIt } from "redux/author.selectors";
 
 
 export const ContactsPage = () => {
@@ -17,6 +18,9 @@ export const ContactsPage = () => {
   const contacts = useSelector((state) => state.contacts.contacts.items);
   const isLoading = useSelector((state) => state.contacts.contacts.isLoading);
   const filter = useSelector((state) => state.contacts.filter);
+
+  const authorization = useSelector(selectIsSignIt)
+
 
   const dispatch = useDispatch();
    
@@ -59,7 +63,7 @@ export const ContactsPage = () => {
 
   
     return (
-      <div
+      (authorization) && (<div
         style={{
           padding: '32px',
           height: '100vh',
@@ -85,7 +89,7 @@ export const ContactsPage = () => {
           onContactDelete={onContactDelete}
         />
 
-      </div>
+      </div>)
     );
   
 };

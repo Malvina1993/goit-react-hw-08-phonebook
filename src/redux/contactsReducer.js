@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {requestContacts, requestAddContact, requestDeleteContact} from '../services/app.js'
+import {requestContacts, requestAddContact, requestDeleteContact, setToken} from '../services/app.js'
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.userData.token;
     try {
+      setToken(token);
       const contacts = await requestContacts();
       return contacts;
     } catch (error) {
@@ -74,7 +77,9 @@ const contactsSlice = createSlice({
       })
       .addCase(addContact.fulfilled, (state, action) => {
         state.contacts.isLoading = false;
-        state.contacts.items.unshift(action.payload);
+        !state.contacts.items ?
+          state.contacts.items = [action.payload] :
+          state.contacts.items.unshift(action.payload);
       })
      .addCase(addContact.rejected, (state, action) => {
         state.contacts.isLoading = false;

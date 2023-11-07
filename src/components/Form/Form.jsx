@@ -39,7 +39,7 @@ export const Form = ({contacts, onSubmit}) => {
         setName('');
         setNumber('');
 
-        if (contacts.some((contact) => contact.name === name)) { 
+        if ((contacts)&&(contacts.some((contact) => contact.name === name))) { 
             alert('This contact already exists');
             return;
         }
