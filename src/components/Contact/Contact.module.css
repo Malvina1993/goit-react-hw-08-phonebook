@@ -1,17 +1,26 @@
 .contact{
     display:flex;
-    gap: 24px;
+    margin: 12px;
+    align-items: center;
+    gap: 14px;
 }
 .liContact{
-    font-size: 24px;
+    font-size: 20px;
+    list-style: none;
 }
 
 .delContact{
     padding: 4px 8px;
-    font-size: 16px;
+    font-size: 14px;
+    
+    background-color: rgb(94, 94, 212);
+    color: aliceblue;
+    border: solid 1px black;
+    box-shadow: 0px 2px 3px 1px rgb(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transition: transform 0.5s;
 }
 
 .delContact:hover{
-    background-color: rgb(67, 24, 184);
-    color: white;
+    transform: scale(1.01);
 }

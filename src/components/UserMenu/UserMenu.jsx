@@ -1,6 +1,9 @@
 import { useDispatch } from "react-redux";
 import { logOutThunk } from "redux/userReducer";
 
+import css from '../Navigation/Navigation.module.css';
+
+
 export const UserMenu = ({ email }) => {
     const dispatch = useDispatch();
 
@@ -9,10 +12,11 @@ export const UserMenu = ({ email }) => {
      }
 
     return (
-        <div>
-            <p>Email: {email}</p>
-            <button onClick={handleOnClick} type="button">LogOut</button>
+        <div className={css.userMenu}>
+            <p >Email: {email}</p>
+            <button className={css.userLogout} onClick={handleOnClick} type="button">LogOut</button>
         </div>
     )
   
 }
+

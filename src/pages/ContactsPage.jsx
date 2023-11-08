@@ -4,12 +4,12 @@ import {Contacts} from "../components/Contacts/Contacts";
 // import { lazy } from 'react';
 // const Cast = lazy(() => import('./Cast/Cast.js'));
 
-import { useEffect} from "react";
+// import { useEffect} from "react";
 import { Filter } from "../components/Filter/Filter";
 
 import {useSelector, useDispatch} from 'react-redux'
 
-import {addContact, deleteContact, fetchContacts, setFilter} from '../redux/contactsReducer.js'
+import {addContact, deleteContact, setFilter} from '../redux/contactsReducer.js'
 import { selectIsSignIt } from "redux/author.selectors";
 
 
@@ -28,13 +28,13 @@ export const ContactsPage = () => {
 
    
 
-  useEffect(() => {
-    if (contacts===null) {
+  // useEffect(() => {
+  //   if (contacts===null) {
       
-      dispatch(fetchContacts())
-    }
+  //     dispatch(fetchContacts())
+  //   }
     
-  }, [dispatch, contacts])
+  // }, [dispatch, contacts])
 
   
   
@@ -71,12 +71,17 @@ export const ContactsPage = () => {
           color: '#010101'
         }}
       >
-        <p>Phonebook</p>
+        {/* <p>Phonebook</p> */}
         <Form
           onSubmit={formSubmitHandle}
           contacts={contacts}
         />
-        <p>Contacts</p>
+        <p style={{
+          fontSize: 40,
+          color: '#010101',
+          marginTop: 24,
+          marginBottom: 16,
+        }}>Contacts</p>
         <Filter
             filter={filter}
             onChange={filterChangeHandle}

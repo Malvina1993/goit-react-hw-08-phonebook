@@ -9,7 +9,9 @@ export const loginThunk = createAsyncThunk(
       console.log(autorUser);
       return autorUser;
     } catch (error) {
+      alert('This user is not find. Try again)))');
       return thunkAPI.rejectWithValue(error.message)
+      
     }
   } 
 );
@@ -22,6 +24,8 @@ export const registerThunk = createAsyncThunk(
       console.log(autorUser)
       return autorUser;
     } catch (error) {
+      alert('This user is register. Try login)))');
+
       return thunkAPI.rejectWithValue(error.message)
     }
   }

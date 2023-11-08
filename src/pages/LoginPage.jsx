@@ -1,8 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux'
-import { selectIsSignIt } from 'redux/author.selectors';
+import { selectIsLoading, selectIsSignIt } from 'redux/author.selectors';
 import { loginThunk } from 'redux/userReducer.js';
+
+import css from './Page.module.css'
+import { Loader } from 'components/Loader/Loader';
 
 export const LoginPage = () => {
   const {
@@ -22,27 +25,30 @@ export const LoginPage = () => {
         reset();
     }
 
-
+    const isLoading = useSelector(selectIsLoading);
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    (!authorization) && (<form onSubmit={handleSubmit(onSubmit)}>
+    (!authorization) && ( (isLoading && <Loader/>) ||
+      <div className={css.formRegister}>
+      <form onSubmit={handleSubmit(onSubmit)}>
 
 
           <label>
-              <span>Email</span>
-              <input {...register("email",{ required: true })} type = "email" />
+              <span className={css.spanForm}>Email</span>
+              <input className={css.inputForm} {...register("email",{ required: true })} type = "email" />
               {errors.email && <span>This field is required</span>}
 
           </label>
           <label>
-              <span>Password</span>
-              <input {...register("password", { required: true, minLenght: 7 })} type ="password"/>
+              <span className={css.spanForm}>Password</span>
+              <input className={css.inputForm} {...register("password", { required: true, minLenght: 7 })} type ="password"/>
               {errors.password && <span>This field is required</span>}
 
           </label>
 
 
-      <button type="submit">Sign In</button>
-    </form>)
+      <button type="submit" className={css.btnForm}>Sign Up</button>
+      </form>
+      </div>)
   )
 };
