@@ -26,15 +26,15 @@ export const Navigation = () => {
             <nav>
                 {!authorization ? (
                     <div  className={css.linkList}>
-                        <NavLink className={css.navLink} to='/register' >
+                        <NavLink className={css.navLink} to='register' >
                             Register
                         </NavLink>
-                        <NavLink className={css.navLink} to='/login' >
+                        <NavLink className={css.navLink} to='login' >
                             Login
                         </NavLink>
                     </div>) : (
                     <div className={css.linkListCont}>
-                        <NavLink className={css.navLinkCont} to='/contacts' onClick={handleClick()}>
+                        <NavLink className={css.navLinkCont} to='contacts' onClick={handleClick()}>
                             Contacts
                         </NavLink>
                         <UserMenu 
