@@ -39,7 +39,7 @@ export const App = () => {
     </header> 
 
      <Routes>
-      <Route path='goit-react-hw-08-phonebook/'>
+      <Route path='/'>
         <Route path = "register" element = {<RegisterPage/>} />
         <Route path = "login" element = {<LoginPage/>} />
         <Route path = "contacts" element = {<ContactsPage/>} />

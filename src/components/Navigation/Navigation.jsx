@@ -2,7 +2,7 @@ import { UserMenu } from 'components/UserMenu/UserMenu';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import {  NavLink } from "react-router-dom";
+import {  NavLink, Outlet } from "react-router-dom";
 import { selectIsSignIt, selectUser } from 'redux/author.selectors';
 
 import css from './Navigation.module.css';
@@ -43,6 +43,7 @@ export const Navigation = () => {
                     </div>
                 )}
             </nav>
+            <Outlet />
         </header>
         
     );
